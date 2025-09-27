@@ -1,6 +1,9 @@
+import { WordsContext } from "~/words-context";
 import { Card } from "./card";
+import { useContext } from "react";
 
-export function Playing({ words }: { words: string[] }) {
+export function Playing() {
+  const { words } = useContext(WordsContext);
   return (
     <>
       <div className="border border-amber-200 p-2 rounded-2xl flex flex-col gap-2">

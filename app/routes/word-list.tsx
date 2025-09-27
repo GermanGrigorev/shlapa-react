@@ -9,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function WordListPage() {
-  return <WordList words={[]} setWords={() => {}} />;
+  return <WordList />;
 }

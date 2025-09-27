@@ -1,12 +1,8 @@
-import { useState, type FormEvent } from "react";
+import { useContext, useState, type FormEvent } from "react";
+import { WordsContext } from "~/words-context";
 
-export function WordList({
-  words,
-  setWords,
-}: {
-  words: string[];
-  setWords: (newWords: string[]) => void;
-}) {
+export function WordList() {
+  const { words, setWords } = useContext(WordsContext);
   const [value, setValue] = useState("");
 
   const handleAdd = (event: FormEvent<HTMLFormElement>) => {
