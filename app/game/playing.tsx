@@ -1,7 +1,8 @@
+import { Card } from "./card";
+
 export function Playing({ words }: { words: string[] }) {
   return (
     <>
-      <div>playing</div>
       <div className="border border-amber-200 p-2 rounded-2xl flex flex-col gap-2">
         <h1>Word list:</h1>
         {words.map((word, idx) => (
@@ -10,6 +11,13 @@ export function Playing({ words }: { words: string[] }) {
           </div>
         ))}
       </div>
+      <Card word={words[0]} />
+      <button className="cursor-pointer border border-amber-200 p-2 rounded-2xl hover:text-amber-200">
+        Ugadal
+      </button>
+      <button className="cursor-pointer border border-amber-200 p-2 rounded-2xl hover:text-amber-200">
+        Mimo
+      </button>
     </>
   );
 }
