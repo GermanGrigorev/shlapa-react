@@ -1,10 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { WordList } from "./word-list";
 import { Playing } from "./playing";
 
 export function Game() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [words, setWords] = useState<string[]>([]);
+
+  useEffect(() => {
+    const wordsString = localStorage.getItem("words");
+    if (wordsString) {
+      const arr: unknown = JSON.parse(wordsString);
+
+      if (Array.isArray(arr) && arr.length > 0 && typeof arr[0] === "string") {
+        setWords(arr);
+      }
+    }
+  }, []);
+
+  const handleSetWords = (newWords: string[]) => {
+    setWords(newWords);
+    localStorage.setItem("words", JSON.stringify(newWords));
+  };
 
   return (
     <main className="flex items-center justify-center pt-16 pb-4">
@@ -26,7 +42,7 @@ export function Game() {
         {isPlaying ? (
           <Playing words={words} />
         ) : (
-          <WordList words={words} setWords={setWords} />
+          <WordList words={words} setWords={handleSetWords} />
         )}
       </div>
     </main>
