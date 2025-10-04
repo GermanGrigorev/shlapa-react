@@ -3,22 +3,23 @@ import { useState, useEffect } from "react";
 import { Outlet } from "react-router";
 import { WordsContext } from "~/entities/game";
 import { routes } from "~/shared/routes";
+import type { IWord } from "~/shared/schema";
 
 export default function MainLayout() {
-  const [words, setWords] = useState<string[]>([]);
+  const [words, setWords] = useState<IWord[]>([]);
 
   useEffect(() => {
     const wordsString = localStorage.getItem("words");
     if (wordsString) {
       const arr: unknown = JSON.parse(wordsString);
 
-      if (Array.isArray(arr) && arr.length > 0 && typeof arr[0] === "string") {
+      if (Array.isArray(arr) && arr.length > 0 && typeof arr[0] === "object") {
         setWords(arr);
       }
     }
   }, []);
 
-  const handleSetWords = (newWords: string[]) => {
+  const handleSetWords = (newWords: IWord[]) => {
     setWords(newWords);
     localStorage.setItem("words", JSON.stringify(newWords));
   };

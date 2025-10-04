@@ -1,6 +1,7 @@
 import { createContext } from "react";
+import type { IWord } from "~/shared/schema";
 
 export const WordsContext = createContext<{
-  words: string[];
-  setWords: (newWords: string[]) => void;
+  words: IWord[];
+  setWords: (newWords: IWord[]) => void;
 }>({ words: [], setWords: () => {} });

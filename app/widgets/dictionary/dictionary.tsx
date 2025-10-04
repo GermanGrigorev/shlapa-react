@@ -2,6 +2,7 @@ import { Button, List, ListItem, TextInput } from "flowbite-react";
 import { IoMdClose } from "react-icons/io";
 import { useContext, useState, type FormEvent } from "react";
 import { WordsContext } from "~/entities/game";
+import { WordCard } from "~/entities/word/ui/word-card/word-card";
 
 export function Dictionary() {
   const { words, setWords } = useContext(WordsContext);
@@ -10,7 +11,7 @@ export function Dictionary() {
   const handleAdd = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (value) {
-      setWords([...words, value]);
+      setWords([...words, { text: value, id: 5 }]);
       setValue("");
     }
   };
@@ -26,15 +27,7 @@ export function Dictionary() {
         <List>
           <h2 className=" font-bold text-xl">Word list:</h2>
           {words.map((word, idx) => (
-            <ListItem
-              className="flex flex-row justify-between items-center"
-              key={idx}
-            >
-              {word}
-              <Button size="md" onClick={handleRemove(idx)}>
-                <IoMdClose />
-              </Button>
-            </ListItem>
+            <WordCard key={idx} word={word} onRemove={handleRemove(idx)} />
           ))}
         </List>
 
@@ -46,7 +39,7 @@ export function Dictionary() {
             onChange={(event) => setValue(event.target.value)}
           />
           <div>
-            <Button>Add entered word</Button>
+            <Button type="submit">Add entered word</Button>
           </div>
         </form>
       </div>
