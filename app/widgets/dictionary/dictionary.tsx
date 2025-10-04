@@ -1,7 +1,7 @@
 import { Button, List, ListItem, TextInput } from "flowbite-react";
 import { IoMdClose } from "react-icons/io";
 import { useContext, useState, type FormEvent } from "react";
-import { WordsContext } from "~/entities/game/model/words-context";
+import { WordsContext } from "~/entities/game";
 
 export function Dictionary() {
   const { words, setWords } = useContext(WordsContext);

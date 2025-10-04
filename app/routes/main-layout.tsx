@@ -1,7 +1,8 @@
 import { Button } from "flowbite-react";
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router";
-import { WordsContext } from "~/entities/game/model/words-context";
+import { WordsContext } from "~/entities/game";
+import { routes } from "~/shared/routes";
 
 export default function MainLayout() {
   const [words, setWords] = useState<string[]>([]);
@@ -26,8 +27,8 @@ export default function MainLayout() {
     <main className="flex items-center justify-center pt-16 pb-4">
       <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
         <div className="flex gap-2">
-          <Button href="/">To WordList</Button>
-          <Button href="/play">Play!</Button>
+          <Button href={routes.index}>To WordList</Button>
+          <Button href={routes.play}>Play!</Button>
         </div>
         <WordsContext value={{ words, setWords: handleSetWords }}>
           <Outlet />

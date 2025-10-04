@@ -1,4 +1,4 @@
-import { Dictionary } from "~/widgets/dictionary/dictionary";
+import { Dictionary } from "~/widgets/dictionary";
 import type { Route } from "./+types/word-list";
 
 export function meta({}: Route.MetaArgs) {

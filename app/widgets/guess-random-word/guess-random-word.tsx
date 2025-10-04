@@ -1,4 +1,4 @@
-import { WordsContext } from "~/entities/game/model/words-context";
+import { WordsContext } from "~/entities/game";
 import { useContext } from "react";
 import { Button, Card, List, ListItem } from "flowbite-react";
 
