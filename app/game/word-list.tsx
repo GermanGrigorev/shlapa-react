@@ -1,3 +1,5 @@
+import { Button, List, ListItem, TextInput } from "flowbite-react";
+import { IoMdClose } from "react-icons/io";
 import { useContext, useState, type FormEvent } from "react";
 import { WordsContext } from "~/words-context";
 
@@ -19,35 +21,32 @@ export function WordList() {
 
   return (
     <div>
-      <header className="flex flex-col items-center gap-9">SHLAPA</header>
+      <h1 className="text-2xl mb-10">SHLAPA</h1>
       <div className="max-w-[300px] w-full space-y-6 px-4">
-        <div className="border border-amber-200 p-2 rounded-2xl flex flex-col gap-2">
-          <h1>Word list:</h1>
+        <List>
+          <h2 className=" font-bold text-xl">Word list:</h2>
           {words.map((word, idx) => (
-            <div className="flex justify-between" key={idx}>
+            <ListItem
+              className="flex flex-row justify-between items-center"
+              key={idx}
+            >
               {word}
-              <button
-                onClick={handleRemove(idx)}
-                className="cursor-pointer  hover:text-amber-200 "
-              >
-                X
-              </button>
-            </div>
+              <Button size="md" onClick={handleRemove(idx)}>
+                <IoMdClose />
+              </Button>
+            </ListItem>
           ))}
-        </div>
+        </List>
 
-        <form onSubmit={handleAdd}>
-          <input
+        <form className="flex flex-col gap-4" onSubmit={handleAdd}>
+          <TextInput
             name="Word-input"
             placeholder="Enter a word"
             value={value}
             onChange={(event) => setValue(event.target.value)}
-            className=" bg-amber-950"
           />
           <div>
-            <button className="mt-5 cursor-pointer border border-amber-200 p-2 rounded-2xl hover:text-amber-200">
-              Add entered word
-            </button>
+            <Button>Add entered word</Button>
           </div>
         </form>
       </div>

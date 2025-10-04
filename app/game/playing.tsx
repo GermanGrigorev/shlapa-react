@@ -1,26 +1,22 @@
 import { WordsContext } from "~/words-context";
-import { Card } from "./card";
 import { useContext } from "react";
+import { Button, Card, List, ListItem } from "flowbite-react";
 
 export function Playing() {
   const { words } = useContext(WordsContext);
   return (
     <>
-      <div className="border border-amber-200 p-2 rounded-2xl flex flex-col gap-2">
-        <h1>Word list:</h1>
+      <List>
+        <ListItem>Word list:</ListItem>
         {words.map((word, idx) => (
-          <div className="flex justify-between" key={idx}>
-            {word}
-          </div>
+          <ListItem key={idx}>{word}</ListItem>
         ))}
+      </List>
+      <Card>{words[0]}</Card>
+      <div className="flex flex-row gap-5">
+        <Button>Ugadal</Button>
+        <Button>Mimo</Button>
       </div>
-      <Card word={words[0]} />
-      <button className="cursor-pointer border border-amber-200 p-2 rounded-2xl hover:text-amber-200">
-        Ugadal
-      </button>
-      <button className="cursor-pointer border border-amber-200 p-2 rounded-2xl hover:text-amber-200">
-        Mimo
-      </button>
     </>
   );
 }
