@@ -1,8 +1,8 @@
-import { WordsContext } from "~/words-context";
+import { WordsContext } from "~/entities/game/model/words-context";
 import { useContext } from "react";
 import { Button, Card, List, ListItem } from "flowbite-react";
 
-export function Playing() {
+export function GuessRandomWord() {
   const { words } = useContext(WordsContext);
   return (
     <>

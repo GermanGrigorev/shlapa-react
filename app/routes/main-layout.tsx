@@ -1,7 +1,7 @@
 import { Button } from "flowbite-react";
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router";
-import { WordsContext } from "~/words-context";
+import { WordsContext } from "~/entities/game/model/words-context";
 
 export default function MainLayout() {
   const [words, setWords] = useState<string[]>([]);

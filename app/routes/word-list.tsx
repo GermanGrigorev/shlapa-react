@@ -1,4 +1,4 @@
-import { WordList } from "~/game/word-list";
+import { Dictionary } from "~/widgets/dictionary/dictionary";
 import type { Route } from "./+types/word-list";
 
 export function meta({}: Route.MetaArgs) {
@@ -9,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function WordListPage() {
-  return <WordList />;
+  return <Dictionary />;
 }

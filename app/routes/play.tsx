@@ -1,5 +1,5 @@
 import type { Route } from "./+types/play";
-import { Playing } from "~/game/playing";
+import { GuessRandomWord } from "~/widgets/guess-random-word/guess-random-word";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Play() {
-  return <Playing />;
+  return <GuessRandomWord />;
 }
