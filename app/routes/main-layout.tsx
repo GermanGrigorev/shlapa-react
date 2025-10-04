@@ -2,6 +2,7 @@ import { Button } from "flowbite-react";
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router";
 import { WordsContext } from "~/entities/game";
+import { localStorageWrapper } from "~/shared/local-storage";
 import { routes } from "~/shared/routes";
 import type { IWord } from "~/shared/schema";
 
@@ -9,19 +10,15 @@ export default function MainLayout() {
   const [words, setWords] = useState<IWord[]>([]);
 
   useEffect(() => {
-    const wordsString = localStorage.getItem("words");
-    if (wordsString) {
-      const arr: unknown = JSON.parse(wordsString);
-
-      if (Array.isArray(arr) && arr.length > 0 && typeof arr[0] === "object") {
-        setWords(arr);
-      }
+    const arr = localStorageWrapper.getItem<IWord[]>("words");
+    if (arr) {
+      setWords(arr);
     }
   }, []);
 
   const handleSetWords = (newWords: IWord[]) => {
     setWords(newWords);
-    localStorage.setItem("words", JSON.stringify(newWords));
+    localStorageWrapper.setItem("words", newWords);
   };
 
   return (
