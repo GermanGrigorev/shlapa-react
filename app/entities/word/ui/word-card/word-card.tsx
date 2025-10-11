@@ -9,7 +9,6 @@ export function WordCard({
   word: IWord;
   onRemove?: () => void;
 }) {
-  console.log("word", word);
   return (
     <ListItem className="flex flex-row justify-between items-center">
       {word.text}
