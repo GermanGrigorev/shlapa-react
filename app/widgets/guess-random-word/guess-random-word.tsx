@@ -14,14 +14,11 @@ export function GuessRandomWord() {
 
   return (
     <>
-      <List>
-        <ListItem>Word list:</ListItem>
-        {words.map((word, idx) => (
-          <WordCard word={word} key={idx} />
-        ))}
-      </List>
-      <div>skip: {skipCnt}</div>
-      <div>guess: {guessCnt}</div>
+      <div>
+        skip: {skipCnt}
+        <br />
+        guess: {guessCnt}
+      </div>
 
       <Card>{item?.text ?? "That's all!"}</Card>
 
@@ -31,6 +28,13 @@ export function GuessRandomWord() {
       </div>
 
       <Timer />
+
+      <List>
+        <ListItem>Word list:</ListItem>
+        {words.map((word, idx) => (
+          <WordCard word={word} key={idx} />
+        ))}
+      </List>
     </>
   );
 }

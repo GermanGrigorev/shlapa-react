@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { shuffle } from "~/shared/array";
 import type { IWord } from "~/shared/schema";
 
 type Props = {
@@ -14,8 +15,7 @@ type Return = {
 };
 
 export function useGetRandomWord({ wordList }: Props): Return {
-  console.log("--initial", wordList);
-  const [list, setList] = useState<IWord[]>(wordList);
+  const [list, setList] = useState<IWord[]>(shuffle(wordList));
 
   const [guessCnt, setGuessCnt] = useState<number>(0);
   const [skipCnt, setSkipCnt] = useState<number>(0);

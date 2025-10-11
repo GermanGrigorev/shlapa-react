@@ -15,7 +15,7 @@ export default function MainLayout() {
     if (arr) {
       setWords(arr);
     }
-    setTimeout(() => setIsAppInited(true), 2000);
+    setIsAppInited(true);
   }, []);
 
   const handleSetWords = (newWords: IWord[]) => {
