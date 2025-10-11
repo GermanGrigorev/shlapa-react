@@ -3,6 +3,7 @@
 
 2 - сделать красивый внешний вид
 -- подключить библиотеку компонентов
+-- design https://docs.google.com/document/d/1vksGI4LrvTIfuScGfSTL-UkCNmRIzASlk_qet4sRsfs/edit?tab=t.0
 
 3 - доработать бизнес-логику
 -- таймер 60 сек
