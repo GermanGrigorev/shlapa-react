@@ -17,6 +17,33 @@ export function GuessRandomWord() {
   });
 
   return (
+    <div className="relative flex flex-col h-screen items-center justify-center">
+      <div className="flex flex-col p-6 absolute top-0 rounded-b-full bg-amber-800 w-screen items-center">
+        <div>{guessCnt}</div>
+        <div className=" uppercase ">Guessed</div>
+      </div>
+      <div className="flex flex-col p-6 absolute bottom-0 rounded-t-full bg-amber-800 w-screen items-center">
+        <div>{skipCnt}</div>
+        <div className=" uppercase ">Skipped</div>
+      </div>
+      {isWorking ? (
+        <div className="rounded-full w-40  h-40 text-5xl uppercase">
+          {item?.text}
+        </div>
+      ) : (
+        <div className="flex flex-col justify-between">
+          <Button
+            className="rounded-full w-40  h-40 text-5xl uppercase"
+            onClick={start}
+          >
+            Start
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+
+  return (
     <>
       <div>
         skip: {skipCnt}
