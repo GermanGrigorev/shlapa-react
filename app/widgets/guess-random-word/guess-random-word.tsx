@@ -2,7 +2,7 @@ import { WordsContext } from "~/entities/game";
 import { useContext } from "react";
 import { Button, Card, List, ListItem } from "flowbite-react";
 import { WordCard } from "~/entities/word/ui/word-card/word-card";
-import { Timer } from "~/shared/timer";
+import { Timer, useTimer } from "~/shared/timer";
 import { useGetRandomWord } from "~/features/get-random-word";
 
 export function GuessRandomWord() {
@@ -10,6 +10,10 @@ export function GuessRandomWord() {
 
   const { item, onGuess, onSkip, guessCnt, skipCnt } = useGetRandomWord({
     wordList: words,
+  });
+
+  const { timeLeft, start, pause, stop, isWorking, isStarted } = useTimer({
+    duration: 60,
   });
 
   return (
@@ -20,21 +24,21 @@ export function GuessRandomWord() {
         guess: {guessCnt}
       </div>
 
-      <Card>{item?.text ?? "That's all!"}</Card>
+      {isWorking && <Card>{item?.text ?? "That's all!"}</Card>}
 
       <div className="flex flex-row gap-5">
         <Button onClick={onGuess}>Guessed</Button>
         <Button onClick={onSkip}>Skip</Button>
       </div>
 
-      <Timer />
-
-      <List>
-        <ListItem>Word list:</ListItem>
-        {words.map((word, idx) => (
-          <WordCard word={word} key={idx} />
-        ))}
-      </List>
+      <Timer
+        start={start}
+        pause={pause}
+        stop={stop}
+        timeLeft={timeLeft}
+        isWorking={isWorking}
+        isStarted={isStarted}
+      />
     </>
   );
 }

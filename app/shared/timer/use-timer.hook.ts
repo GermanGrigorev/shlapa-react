@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-type Seconds = number;
+export type Seconds = number;
 
 type Props = { duration: Seconds };
 
@@ -18,10 +18,12 @@ export function useTimer({ duration }: Props): Return {
   const [timeoutIdx, setTimeoutIdx] = useState<NodeJS.Timeout | null>(null);
 
   const pause = () => {
-    if (timeoutIdx) {
-      clearInterval(timeoutIdx);
-      setTimeoutIdx(null);
-    }
+    setTimeoutIdx((prev) => {
+      if (prev) {
+        clearInterval(prev);
+      }
+      return null;
+    });
   };
 
   const start = () => {

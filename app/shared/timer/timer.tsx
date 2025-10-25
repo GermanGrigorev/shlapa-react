@@ -1,11 +1,23 @@
-import { Button, Card } from "flowbite-react";
-import { useTimer } from "./use-timer.hook";
+import { Button } from "flowbite-react";
+import { type Seconds } from "./use-timer.hook";
 
-export function Timer() {
-  const { timeLeft, start, pause, stop, isWorking, isStarted } = useTimer({
-    duration: 60,
-  });
+type Props = {
+  start: () => void;
+  pause: () => void;
+  stop: () => void;
+  timeLeft: Seconds;
+  isWorking: boolean;
+  isStarted: boolean;
+};
 
+export function Timer({
+  timeLeft,
+  start,
+  pause,
+  stop,
+  isWorking,
+  isStarted,
+}: Props) {
   if (isWorking) {
     return (
       <div className="flex flex-col gap-3">
